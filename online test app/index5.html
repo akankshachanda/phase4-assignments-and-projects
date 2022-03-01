@@ -1,0 +1,29 @@
+<!DOCTYPEhtml>
+<html>
+<head></head>
+<body>
+    <divclass="row justify-content-center">
+        <divclass="col-md-4 text-left bg-white rounded shadow-lg mb-5 mt-5 py-3">
+            <imgclass="rounded mx-auto d-block mb-4"src="../../assets/images/quizlog-removebg-preview.png"alt=""width="72"height="72">
+            <form(ngSubmit) = "onsubmit(signupform)"#signupform = "ngForm">
+                <divclass="form-group">
+                    <labelfor="email">Email</label>
+                    <inputtype="email"class="form-control"id="email"placeholder="john@abc.com"name="Umail"ngModelrequiredemail#email="ngModel">
+                    <small*ngIf = '!email.valid&&  email.touched'class="text-danger">Please Enter Valid Email</small>
+                </div>
+
+                <divclass="form-group">
+                    <labelfor="pass">New Password</label>
+                    <inputtype="password"class="form-control"id="pass"name="Upass"ngModelrequired#pass="ngModel">
+                    <small*ngIf = '!pass.valid&&  pass.touched'class="text-danger">Please Enter New Password</small>
+                </div>
+                
+                <buttontype="submit"class="btnbtn-primary float-right"[disabled] = '!signupform.valid'>Change Password</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<app-footer></app-footer>
+
+<app-navbar></app-navbar>

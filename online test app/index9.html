@@ -1,0 +1,131 @@
+<!DOCTYPEhtml>
+<html>
+<head>
+</head>
+<body>
+    <divclass="sidenav"></div>
+    <divclass="main">
+        <divid="Heading"class="media text-muted pt-3">
+            <div  class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <divclass="d-flex justify-content-between align-items-center w-100">
+                    <strongclass="text-dark">&nbsp;Quiz Instruction</strong>
+                </div>
+            </div>
+        </div>
+        
+        <divclass="row">
+            <div  class="col">
+                <divclass="inst">
+                    <br>This quiz consists of 10 multiple-choice questions. Keep the following in mind:<br><br>
+                    <ul>
+                    <li><strong>Multiple Attempts -</strong> You will have <em>unlimited</em> attempts for this quiz.</li>
+                    <li><strong>Timing -</strong> You will need to complete each of your attempts in one sitting, as you are allotted 15 minutes to complete each attempt.</li>
+                    <li><strong>Answers -</strong> You may review your answer-choices and compare them to the correct answers after your final submission.</li>
+                    </ul>
+                    To start, click the <strong>"Start Quiz"</strong> button. When finished, click the <strong>"Submit Quiz"</strong> button.
+                </div>
+            </div>
+        </div>
+
+        <divclass="my-3 p-3 bg-white rounded shadow-lg">
+            <divclass="row">
+                <divid ="Heading"class="col">
+                    <divclass="media text-muted pt-3">
+                        <divclass="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                            <divclass="d-flex justify-content-between align-items-center w-100">
+                                <strongclass="text-dark">Quiz Information</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <divclass="w-100"></div>
+
+                <divclass="col">
+                    <divclass="media text-muted pt-3">
+                        <divclass="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                            <divclass="d-flex justify-content-between align-items-center w-100">
+                                <h6><strongclass="text-gray-dark">Quiz Section: {{qname}}</strong></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <divclass="col">
+                    <divclass="media text-muted pt-3">
+                        <divclass="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                            <divclass="d-flex justify-content-between align-items-center w-100">
+                                <h6><strongclass="text-gray-dark">Total Duration: 15 Minutes</strong></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <divclass="w-100"></div>
+
+                <divclass="col">
+                    <divclass="media text-muted pt-3">
+                        <divclass="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                            <divclass="d-flex justify-content-between align-items-center w-100">
+                                <h6><strongclass="text-gray-dark">Total Screen Question: 10</strong></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <divclass="col">
+                    <divclass="media text-muted pt-3">
+                        <divclass="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                            <divclass="d-flex justify-content-between align-items-center w-100">
+                                <h6><strongclass="text-gray-dark">Points: 100 </strong></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <divclass="text-center">
+            
+            <span><aclass="btnbtn-danger"role="button"(click) = "homecnf()"><iclass="bi bi-house-fill"></i> Back to Home</a></span>
+            <span><aclass="btnbtn-success"[routerLink] = "['/quizdisplay']"role="button"><iclass="bi bi-hourglass-top"></i> Start Quiz</a></span>
+        </div>
+    </div>
+</body>
+</html>
+
+<app-navbar></app-navbar>
+<divclass="jumbotron">
+    <h1class="display-4"><strong>Score Card</strong></h1>
+    <hrclass="my-4">
+    <p>See your score card on clicking below button.</p>
+    <aclass="btnbtn-success"data-toggle="collapse"href="#collapseExample"role="button"aria-expanded="false"aria-controls="collapseExample">
+        Review & Result
+    </a>
+</div>
+
+<divclass="collapse"id="collapseExample">
+    <divclass="card card-body">
+        <divstyle="background-color: #85C1E9 ;padding:10px;"><h3>Your Score:&nbsp;{{point}}/100</h3></div>
+        <tableclass="table">
+            <thead>
+                <tr>
+                    <thscope="col">#</th>
+                    <thscope="col">Questions</th>
+                    <thscope="col">Correct Answer</th>
+                    <thscope="col">Your Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr*ngFor = 'let item of filecontent'>
+                    <thscope="row">{{item.qid}}</th>
+                    <td>{{item.qtext}}</td>
+                    <td>{{item.ans}}</td>
+                    <td[ngClass]="{greenClass: item.col, redClass: !item.col}">{{item.uans}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<app-footer></app-footer>
+
